@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% block content %}
+{% include "header.html" %}
+<div class="row">
+    <h2>name</h2>
+    <div class="col-sm-7">
+        <p>
+          <h2>description</h2>
+          <hr><h6>Price</h6>
+          <hr><h6>Status</h6>
+        </p>
+          <div>
+            <a class="btn btn-warning" role="button" href="#">Edit Item</a>
+            <a class="btn btn-danger" role="button" href="#">Delete Item</a>
+          </div>
+    </div>
+  </div>
+{% endblock %}

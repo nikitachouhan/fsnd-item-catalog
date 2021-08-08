@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% block content %}
+{% include "header.html" %}
+<div class="row">
+  <h2>Add Item</h2>
+  <div class="col-sm-5">
+    <form method="post">
+      <h5>Name</h5>
+        <input type="text" name="name" placeholder="Enter name">
+      <h5>Description</h5>
+        <input type="text" name="description" placeholder="Enter description">
+      <h5>Price</h5>
+        <input type="text" name="price" placeholder="Enter price">
+      <h5>Status</h5>
+        <select name="item_status">
+            <option value="Available">Available</option>
+            <option value="Rented">Rented</option>
+        </select>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
