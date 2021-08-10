@@ -9,7 +9,6 @@
 - [Technologies](#technologies)
 - [Repository Data](#repository-data)
 - [Installation](#installation)
-- [How To Run](#howtorun)
 - [Highlights](#highlights)
 
 ## Project Overview
@@ -23,7 +22,7 @@ It provides login and logout funcationality for a user. An authenticated user ca
 
 ## Technologies
 
-- Python3
+- Python 3
 - Flask Framework
 - Google OAuth2.0
 - CSS
@@ -32,12 +31,41 @@ It provides login and logout funcationality for a user. An authenticated user ca
 
 ## Repository Data
 
-- [static/](static)
-  - [img/](static/img): Images used in the application.
+- [static](static)
+  - [img](static/img): Contains images used in the application.
   - [style.css](style.css): Custom css file.
-- [templates/](templates): HTML webpage templates.
+- [template](templates): HTML webpage templates.
 - [.gitignore](.gitignore): Contains files to exclude from commits.
 - [app.py](app.py): Main python backend application file.
 - [db_setup.py](db_setup.py): Python file to setup the db.
 - [populate_db_data.py](populate_db_data.py): Python file to populate the db.
 - [README.md](README.md): Project Documentation file.
+
+## Installation
+As a prerequisite, installation steps are provided by udacity.
+
+- #### Install VirtualBox and Vagrant
+  Install VirtualBox from virtualbox.org to run a virtual machine. Install Vagrant to configure the VM.
+  I have used VirtualBox-6.0.14 version with Vagrant-2.2.6 version.
+
+- #### VM configuration
+  Follow the Vagrant virtual machine configuration from [Udacity virtual machine configuration](https://github.com/udacity/fullstack-nanodegree-vm) to start and ssh into virtual   machine.
+
+- #### Generate Google Authentication Credentials
+  - Login to the [Google Cloud Platform Console](https://console.cloud.google.com/apis/credentials).
+  - Create a new project with any name ex- Item Catalog Application.
+  - Under Create Credentials select OAuth Client ID
+  - Configure Consent Screen before proceeding
+  - In Create Credentials provide Application Type as `Web Application`
+  - Add `http://localhost:8000` under Authorized JavaScript origins and Authorized Redirect URIs.
+  - Download the JSON file for credentials and put it inside app directory after renaming to `client_secrets.json`.
+
+- #### RUN Application
+  - Create the database: `python3 populate_db_data.py`
+  - Populate the data in database: `python3 db_setup.py`
+  - Run the application: `python3 app.py`
+  - Access http://localhost:8000 in browser
+
+## Highlights
+- Since Google+ is deprecated, google authentication code from instructor notes did not work for me.
+  I used the solution from [Udacity Knowledge Hub](https://knowledge.udacity.com/questions/43336)
