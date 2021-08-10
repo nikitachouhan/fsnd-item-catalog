@@ -9,6 +9,7 @@
 - [Technologies](#technologies)
 - [Repository Data](#repository-data)
 - [Installation](#installation)
+- [How To Run](#how-to-run)
 - [Highlights](#highlights)
 
 ## Project Overview
@@ -19,6 +20,7 @@ The Item Catalog project consists of developing an application that provides a l
 
 This is a book rental application that has the book genres listed as categories and books under each genre are listed as items. A book item contains a detailed description along with price and availabilty status of the item.
 It provides login and logout funcationality for a user. An authenticated user can add, delete and update a book item.
+A catalog json endpoint is provided to access the list of categories and items in json fromat. 
 
 ## Technologies
 
@@ -51,6 +53,8 @@ As a prerequisite, installation steps are provided by udacity.
 - #### VM configuration
   Follow the Vagrant virtual machine configuration from [Udacity virtual machine configuration](https://github.com/udacity/fullstack-nanodegree-vm) to start and ssh into virtual   machine.
 
+## How To Run
+
 - #### Generate Google Authentication Credentials
   - Login to the [Google Cloud Platform Console](https://console.cloud.google.com/apis/credentials).
   - Create a new project with any name ex- Item Catalog Application.
@@ -61,8 +65,8 @@ As a prerequisite, installation steps are provided by udacity.
   - Download the JSON file for credentials and put it inside app directory after renaming to `client_secrets.json`.
 
 - #### RUN Application
-  - Create the database: `python3 populate_db_data.py`
-  - Populate the data in database: `python3 db_setup.py`
+  - Create the database: `python3 db_setup.py`
+  - Populate the data in database: `python3 populate_db_data.py`
   - Run the application: `python3 app.py`
   - Access http://localhost:8000 in browser
 
