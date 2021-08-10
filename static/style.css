@@ -1,0 +1,40 @@
+html {
+  background-color: #000;
+}
+body {
+  min-height: 100vh;
+
+  background-color: papayawhip;
+  margin: 0 auto;
+}
+.carousel {
+  padding-top: 15px;
+  width: 100%;
+}
+
+.carousel img {
+  height: 600px;
+  width: auto;
+  max-width: none;
+}
+
+.carousel-item img {
+  object-fit: cover;
+}
+.anchor {
+  text-decoration: none;
+  color: #6610f2;
+}
+
+.list {
+  list-style-type: none;
+  padding-left: 0;
+}
+.row {
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+#result {
+  padding-left: 700px;
+}

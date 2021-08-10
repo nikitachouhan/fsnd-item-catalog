@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% block content %}
+{% include "header.html" %}
+<div class = "row">
+  <div class="col-sm-3" >
+    <h2>Categories</h2>
+    <ul class="list">
+      {% for category in categories %}
+        <li>
+          <a class="anchor" href="{{ url_for('showCategory', category=category.name) | replace('%20', '%2D') }}">
+            {{ category.name }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-sm-5">
+    <h2>{{ category_name }} Items ({{ items_count }})</h2>
+    <ul class="list">
+      {% for item in category_items %}
+        <li>
+          <a class="anchor" href="{{ url_for('showItem', category=item.item_category.name, item=item.name) | replace('%20', '%2D') }}">
+            {{ item.name }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    {% if user_login %}
+      <a class="btn btn-outline-danger" role="button" href="{{ url_for('addItem') }}">Add Item</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

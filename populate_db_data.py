@@ -14,7 +14,7 @@ session = DBSession()
 
 
 # Creating dummy user
-User1 = User(name="Nikita Chouhan", email="nikitachouhan@gmail.com")
+User1 = User(name="Nikita Chouhan", email="nikita.ch@gmail.com")
 session.add(User1)
 session.commit()
 
@@ -26,7 +26,8 @@ session.add(categories1)
 session.commit()
 
 categoryItem1 = Items(user_id=1, name="WatchMen", price="1.50", status="Available",
-                      description="Watchmen is an American comic book series by British creative team of writer Alan Moore, artist Dave Gibbons and colorist John Higgins.", item_category=categories1)
+                      description="Watchmen is an American comic book series by British creative team of writer Alan Moore, artist Dave Gibbons and colorist John Higgins.",
+                      item_category=categories1)
 
 session.add(categoryItem1)
 session.commit()
@@ -77,7 +78,8 @@ session.commit()
 
 
 categoryItem1 = Items(user_id=1, name="The Hitchhiker's Guide to the Galaxy", price="1.50", status="Available",
-                      description="The Hitchhiker's Guide to the Galaxy is a comedy science fiction franchise created by Douglas Adams.", item_category=categories3)
+                      description="The Hitchhiker's Guide to the Galaxy is a comedy science fiction franchise created by Douglas Adams.",
+                      item_category=categories3)
 
 session.add(categoryItem1)
 session.commit()

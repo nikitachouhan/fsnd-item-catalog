@@ -2,17 +2,21 @@
 {% block content %}
 {% include "header.html" %}
 <div class="row">
-    <h2>name</h2>
+    <h2>{{ item.name }}</h2>
     <div class="col-sm-7">
         <p>
-          <h2>description</h2>
+          {{ item.description }}
           <hr><h6>Price</h6>
+          {{ item.price }}$
           <hr><h6>Status</h6>
+          {{ item.status }}
         </p>
+        {% if user_login %}
           <div>
-            <a class="btn btn-warning" role="button" href="#">Edit Item</a>
-            <a class="btn btn-danger" role="button" href="#">Delete Item</a>
+            <a class="btn btn-outline-warning" role="button" href="{{ url_for('editItem', category=item.item_category.name, item=item.name) }}">Edit Item</a>
+            <a class="btn btn-outline-danger" role="button" href="{{ url_for('deleteItem', category=item.item_category.name, item=item.name) }}">Delete Item</a>
           </div>
+        {% endif %}
     </div>
   </div>
 {% endblock %}

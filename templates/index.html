@@ -1,6 +1,15 @@
 {% extends 'main.html' %}
 {% block content %}
 {% include "header.html" %}
+<div class="row" style = "padding-left: 25px;">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
 <div class = "row" >
     <div class="col-sm-5">
         <div id="mycarousel" class="carousel slide carousel-fade carousel-dark" data-bs-ride="carousel">
@@ -35,5 +44,28 @@
             </button>
         </div>
     </div>
+    <div class="col-sm-3" style="padding-top: 15px;">
+        <h2>Categories</h2>
+        <ul class="list">
+        {% for category in categories %}
+            <li>
+                <a class="anchor" href="{{ url_for('showCategory', category=category.name) | replace('%20', '%2D') }}">{{ category.name }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="col-sm-3" style="padding-top: 15px;">
+        <h2>New Arrivals</h2>
+        <ul class="list">
+        {% for item in latest_addition %}
+            <li>
+                <a class="anchor" href="{{ url_for('showItem', category=item.item_category.name, item=item.name) | replace('%20', '%2D') }}" >{{ item.name }} <em class="text-muted">({{ item.item_category.name }})</em></a>
+            </li>
+        {% endfor %}
+        </ul>
+    </br>
+        <a class = "text-dark " href="{{ url_for('catalogJson') }}">Catalog JSON</a>
+    </div>
+    
 </div>
 {% endblock %}
