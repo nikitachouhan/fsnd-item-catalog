@@ -61,14 +61,14 @@ As a prerequisite, installation steps are provided by udacity.
   - Under Create Credentials select OAuth Client ID
   - Configure Consent Screen before proceeding
   - In Create Credentials provide Application Type as `Web Application`
-  - Add `http://localhost:8000` under Authorized JavaScript origins and Authorized Redirect URIs.
+  - Add `http://localhost:5000` under Authorized JavaScript origins and Authorized Redirect URIs.
   - Download the JSON file for credentials and put it inside app directory after renaming to `client_secrets.json`.
 
 - #### RUN Application
   - Create the database: `python3 db_setup.py`
   - Populate the data in database: `python3 populate_db_data.py`
   - Run the application: `python3 app.py`
-  - Access http://localhost:8000 in browser
+  - Access http://localhost:5000 in browser
 
 ## Highlights
 - Since Google+ is deprecated, google authentication code from instructor notes did not work for me.
