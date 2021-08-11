@@ -75,3 +75,4 @@ As a prerequisite, installation steps are provided by udacity.
   I referred the solution from [Udacity Knowledge Hub](https://knowledge.udacity.com/questions/43336)
 - For Frontend I have referred [Bootstrap Documentation](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 - Login and Logout functionality is referred from Instructor notes with modifications as needed.
+- Images are used from [Unsplash](https://unsplash.com/s/photos/book-cover)
