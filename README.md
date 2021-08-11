@@ -72,4 +72,4 @@ As a prerequisite, installation steps are provided by udacity.
 
 ## Highlights
 - Since Google+ is deprecated, google authentication code from instructor notes did not work for me.
-  I used the solution from [Udacity Knowledge Hub](https://knowledge.udacity.com/questions/43336)
+  I referred the solution from [Udacity Knowledge Hub](https://knowledge.udacity.com/questions/43336)
