@@ -193,7 +193,7 @@ def gconnect():
     login_session['email'] = data['email']
 
     # if user doesn't exist then create a new one.
-    user_id = (session.query(User).filter_by(email=data["email"]).one()).id
+    user_id = getUserID(data["email"])
     if not user_id:
         user_id = createUser(login_session)
     login_session['user_id'] = user_id
@@ -214,6 +214,14 @@ def createUser(login_session):
     session.commit()
     user = session.query(User).filter_by(email=login_session['email']).one()
     return user.id
+
+
+def getUserID(email):
+    try:
+        user = session.query(User).filter_by(email=email).one()
+        return user.id
+    except Exception:
+        return None
 
 
 """
@@ -393,4 +401,5 @@ def gdisconnect():
 
 
 if __name__ == '__main__':
+    app.debug = True
     app.run(host='0.0.0.0', port=5000, threaded=False)
