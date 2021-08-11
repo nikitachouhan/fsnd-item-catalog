@@ -73,3 +73,5 @@ As a prerequisite, installation steps are provided by udacity.
 ## Highlights
 - Since Google+ is deprecated, google authentication code from instructor notes did not work for me.
   I referred the solution from [Udacity Knowledge Hub](https://knowledge.udacity.com/questions/43336)
+- For Frontend I have referred [Bootstrap Documentation](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+- Login and Logout functionality is referred from Instructor notes with modifications as needed.
