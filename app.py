@@ -152,10 +152,10 @@ def gconnect():
         return response
 
     # Verify that the access token is used for the intended user.
-    gplus_id = credentials.id_token['sub']
-    print(f"Google User ID is {gplus_id}.")
+    guser_id = credentials.id_token['sub']
+    print(f"Google User ID is {guser_id}.")
     print(f"Result from Google access token is:, '\n', {result}.")
-    if result['user_id'] != gplus_id:
+    if result['user_id'] != guser_id:
         response = make_response(
             json.dumps("Token's user ID doesn't match given user ID."), 401)
         response.headers['Content-Type'] = 'application/json'
@@ -170,8 +170,8 @@ def gconnect():
         return response
 
     stored_access_token = login_session.get('access_token')
-    stored_gplus_id = login_session.get('gplus_id')
-    if stored_access_token is not None and gplus_id == stored_gplus_id:
+    stored_guser_id = login_session.get('guser_id')
+    if stored_access_token is not None and guser_id == stored_guser_id:
         response = make_response(json.dumps('user is already connected.'),
                                  200)
         response.headers['Content-Type'] = 'application/json'
@@ -179,7 +179,7 @@ def gconnect():
 
     # Store the access token in the session for later use.
     login_session['access_token'] = credentials.access_token
-    login_session['gplus_id'] = gplus_id
+    login_session['guser_id'] = guser_id
 
     # Get user info
     userinfo_url = "https://www.googleapis.com/oauth2/v1/userinfo"
@@ -192,10 +192,8 @@ def gconnect():
 
     login_session['email'] = data['email']
 
-    login_session['provider'] = 'google'
-
     # if user doesn't exist then create a new one.
-    user_id = getUserID(data["email"])
+    user_id = (session.query(User).filter_by(email=data["email"]).one()).id
     if not user_id:
         user_id = createUser(login_session)
     login_session['user_id'] = user_id
@@ -204,8 +202,9 @@ def gconnect():
     output += '<h4>Welcome, '
     output += login_session['username']
     output += '!</h4>'
-    print('Done!')
     return output
+
+# creates a standalone user.
 
 
 def createUser(login_session):
@@ -215,14 +214,6 @@ def createUser(login_session):
     session.commit()
     user = session.query(User).filter_by(email=login_session['email']).one()
     return user.id
-
-
-def getUserID(email):
-    try:
-        user = session.query(User).filter_by(email=email).one()
-        return user.id
-    except Exception:
-        return None
 
 
 """
@@ -387,12 +378,11 @@ def gdisconnect():
     h = httplib2.Http()
     result = h.request(url, 'GET')[0]
     if result['status'] == '200':
-        del login_session['gplus_id']
+        del login_session['guser_id']
         del login_session['access_token']
         del login_session['username']
         del login_session['email']
         del login_session['user_id']
-        del login_session['provider']
         flash("You are successfully logged out.")
         return redirect(url_for('homePage'))
     else:

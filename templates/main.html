@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-     <!-- Custom CSS -->
+    <!-- Custom CSS -->
     <link rel=stylesheet type=text/css href="/static/style.css"> 
     <title>Item Catalog</title>
     <!-- PRE-REQUISITES FOR GOOGLE SIGN IN -->
@@ -52,10 +52,10 @@
               contentType: 'application/octet-stream; charset=utf-8',
               success: function (result) {
                 if (result) {
-                  $('#result').html('<h4>Login Successful!</h4></br>' + result + '</br>Redirecting...');
+                  $('#result').html('<h4>Login Successful!</h4></br>' + result);
                   setTimeout(function () {
-                    window.location.href = "/";
-                  }, 4000);
+                    window.location.href = "{{ url_for('homePage') }}";
+                  }, 2000);
                 } else if (authResult['error']) {
                   console.log('There was an error: ' + authResult['error']);
                 } else {
